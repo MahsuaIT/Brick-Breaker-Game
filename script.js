@@ -2,6 +2,44 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
+// Variables to check if buttons are pressed
+let isLeftPressed = false;
+let isRightPressed = false;
+
+document.getElementById('moveLeft').addEventListener('mousedown', function() {
+    isLeftPressed = true;
+});
+
+document.getElementById('moveLeft').addEventListener('mouseup', function() {
+    isLeftPressed = false;
+});
+
+document.getElementById('moveRight').addEventListener('mousedown', function() {
+    isRightPressed = true;
+});
+
+document.getElementById('moveRight').addEventListener('mouseup', function() {
+    isRightPressed = false;
+});
+
+// For touch support (mobile)
+document.getElementById('moveLeft').addEventListener('touchstart', function() {
+    isLeftPressed = true;
+});
+
+document.getElementById('moveLeft').addEventListener('touchend', function() {
+    isLeftPressed = false;
+});
+
+document.getElementById('moveRight').addEventListener('touchstart', function() {
+    isRightPressed = true;
+});
+
+document.getElementById('moveRight').addEventListener('touchend', function() {
+    isRightPressed = false;
+});
+
+
 // Resize canvas
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
@@ -133,6 +171,14 @@ function drawBricks() {
     }
 }
 
+function movePaddle() {
+    if (isLeftPressed && paddleX > 0) {
+        paddleX -= 7; // Adjust paddle speed as needed
+    }
+    if (isRightPressed && paddleX < canvas.width - paddleWidth) {
+        paddleX += 7; // Adjust paddle speed as needed
+    }
+}
 
 // Draw everything
 function draw() {
@@ -174,7 +220,11 @@ function draw() {
         paddleX -= 7;
     }
 
+    movePaddle(); // Add this line to the game loop
+
+    // More game rendering logic...
     requestAnimationFrame(draw);
+    
 }
 
 // Detect collisions between the ball and the bricks

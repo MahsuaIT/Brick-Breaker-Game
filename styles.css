@@ -43,7 +43,7 @@ body, html {
 #CopyRight {
     position: absolute;
     top: 95%;
-    left: 10%;
+    left: 5%;
     color: black;
     font-size: 15px;
     font-family: Arial, sans-serif;
@@ -55,7 +55,7 @@ body, html {
 #Donate {
     position: absolute;
     top: 95%;
-    left: 70%;
+    left: 75%;
     color: black;
     font-size: 15px;
     font-family: Arial, sans-serif;
@@ -84,4 +84,35 @@ body, html {
     border: 1px solid #888;
     width: 80%;
     text-align: center;
+}
+
+#controlButtons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#moveRight {
+    position: absolute;
+    top: 92%;
+    left: 60%;
+    color: black;
+    font-size: 35px;
+}
+
+#moveLeft{
+    position: absolute;
+    top: 92%;
+    left: 40%;
+    color: black;
+    font-size: 35px;
+}
+
+#moveLeft:active, #moveRight:active {
+    background-color: #555;
+}
+
+#moveLeft:hover, #moveRight:hover {
+    background-color: #444;
 }
